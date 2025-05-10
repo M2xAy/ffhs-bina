@@ -23,7 +23,7 @@ jobs:
         run: |
           jupyter-book create _book
           rm _book/content/*.md
-          cp *.ipynb _book/content/
+          cp /notebooks/*.ipynb _book/content/
 
       - name: Build book
         run: jupyter-book build _book
