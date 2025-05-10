@@ -27,7 +27,6 @@ jobs:
           cp notebooks/*.ipynb ffhs-book/content/
 
 
-
       - name: Create _toc.yml
         run: |
           echo "format: jb-book" > ffhs-book/_toc.yml
