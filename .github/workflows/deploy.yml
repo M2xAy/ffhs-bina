@@ -26,10 +26,12 @@ jobs:
           mkdir -p ffhs-book/content
           cp notebooks/onlyAnalysis_Ernährung.ipynb ffhs-book/content/
 
+
       - name: Create _toc.yml
         run: |
           echo "format: jb-book" > ffhs-book/_toc.yml
           echo "root: onlyAnalysis_Ernährung" >> ffhs-book/_toc.yml
+
 
       - name: Build book
         run: jupyter-book build ffhs-book
