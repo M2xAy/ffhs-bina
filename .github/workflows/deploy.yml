@@ -1,0 +1,34 @@
+name: Build and Deploy Jupyter Book
+
+on:
+  push:
+    branches: [main]  # falls dein Hauptbranch anders heisst, anpassen
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install jupyter-book and ghp-import
+        run: pip install jupyter-book ghp-import
+
+      - name: Create minimal book structure
+        run: |
+          jupyter-book create _book --quiet
+          rm _book/content/*.md
+          cp *.ipynb _book/content/
+
+      - name: Build book
+        run: jupyter-book build _book
+
+      - name: Deploy to GitHub Pages
+        run: |
+          cd _book
+          ghp-import -n -p -f _build/html
