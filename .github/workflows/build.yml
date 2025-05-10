@@ -38,6 +38,7 @@ jobs:
           echo "format: jb-book" > ffhs-book/_toc.yml
           echo "root: onlyanalysis_ernaehrung" >> ffhs-book/_toc.yml
 
+
       - name: Build Jupyter Book
         run: jupyter-book build ffhs-book
 
