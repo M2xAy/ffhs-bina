@@ -24,8 +24,7 @@ jobs:
           rm -rf ffhs-book
           jupyter-book create ffhs-book
           mkdir -p ffhs-book/content
-          cp notebooks/*.ipynb ffhs-book/content/
-
+          cp notebooks/onlyAnalysis_Ernährung.ipynb ffhs-book/content/
 
       - name: Create _toc.yml
         run: |
