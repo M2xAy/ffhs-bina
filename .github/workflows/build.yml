@@ -36,7 +36,8 @@ jobs:
           mkdir -p ffhs-book/content
           cp onlyAnalysis_ernaehrung.ipynb ffhs-book/content/
           echo "format: jb-book" > ffhs-book/_toc.yml
-          echo "root: onlyanalysis_ernaehrung" >> ffhs-book/_toc.yml
+          echo "root: content/onlyAnalysis_ernaehrung" >> ffhs-book/_toc.yml
+
 
 
       - name: Build Jupyter Book
