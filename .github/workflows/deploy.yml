@@ -21,8 +21,10 @@ jobs:
 
       - name: Create book and copy notebooks
         run: |
+          rm -rf ffhs-book
           jupyter-book create ffhs-book
           cp notebooks/*.ipynb ffhs-book/content/
+
 
       - name: Create _toc.yml
         run: |
