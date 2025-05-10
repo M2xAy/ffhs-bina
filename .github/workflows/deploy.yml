@@ -2,7 +2,7 @@ name: Build and Deploy Jupyter Book
 
 on:
   push:
-    branches: [main]  # ggf. anpassen
+    branches: [main]
 
 jobs:
   build:
@@ -19,11 +19,15 @@ jobs:
       - name: Install jupyter-book and ghp-import
         run: pip install jupyter-book ghp-import
 
-      - name: Create minimal book structure
+      - name: Create book and copy notebooks
         run: |
           jupyter-book create _book
-          rm _book/content/*.md
-          cp /notebooks/*.ipynb _book/content/
+          cp notebooks/*.ipynb _book/content/
+
+      - name: Create _toc.yml
+        run: |
+          echo "format: jb-book" > _book/_toc.yml
+          echo "root: gesundheit" >> _book/_toc.yml  # Passe "gesundheit" an deinen Dateinamen an
 
       - name: Build book
         run: jupyter-book build _book
