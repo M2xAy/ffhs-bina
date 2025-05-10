@@ -2,7 +2,7 @@ name: Build and Deploy Jupyter Book
 
 on:
   push:
-    branches: [main]  # falls dein Hauptbranch anders heisst, anpassen
+    branches: [main]  # ggf. anpassen
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Create minimal book structure
         run: |
-          jupyter-book create _book --quiet
+          jupyter-book create _book
           rm _book/content/*.md
           cp *.ipynb _book/content/
 
