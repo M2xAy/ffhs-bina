@@ -21,18 +21,18 @@ jobs:
 
       - name: Create book and copy notebooks
         run: |
-          jupyter-book create _book
-          cp notebooks/*.ipynb _book/content/
+          jupyter-book create ffhs-book
+          cp notebooks/*.ipynb ffhs-book/content/
 
       - name: Create _toc.yml
         run: |
-          echo "format: jb-book" > _book/_toc.yml
-          echo "root: gesundheit" >> _book/_toc.yml  # Passe "gesundheit" an deinen Dateinamen an
+          echo "format: jb-book" > ffhs-book/_toc.yml
+          echo "root: gesundheit" >> ffhs-book/_toc.yml  # ← Datei ohne .ipynb-Endung
 
       - name: Build book
-        run: jupyter-book build _book
+        run: jupyter-book build ffhs-book
 
       - name: Deploy to GitHub Pages
         run: |
-          cd _book
+          cd ffhs-book
           ghp-import -n -p -f _build/html
